@@ -28,5 +28,4 @@ public class EmployeesResponseDto {
     private Double commissionPct;
     private Long managerId;
     private Long departmentId;
-
 }

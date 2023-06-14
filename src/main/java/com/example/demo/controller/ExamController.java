@@ -5,11 +5,7 @@ import com.example.demo.global.exception.StatusMsgCode;
 import com.example.demo.service.ExamService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,9 +24,20 @@ public class ExamController {
         return ResponseEntity.ok(new DataMsgResponseDto(StatusMsgCode.SUCCESS,examService.getUserHistory(id)));
     }
 
-    @GetMapping("/history")
-    public ResponseEntity<DataMsgResponseDto> getAllUserHistory() {
-        return ResponseEntity.ok(new DataMsgResponseDto(StatusMsgCode.SUCCESS,examService.getAllUserHistory()));
+    @GetMapping("/departments/{id}")
+    public ResponseEntity<DataMsgResponseDto> getDeptLocation(@PathVariable Long id) {
+        return ResponseEntity.ok(new DataMsgResponseDto(StatusMsgCode.SUCCESS,examService.getDeptLocation(id)));
+    }
+
+    @PostMapping("/raise/{name}/{rate}")
+    public ResponseEntity<DataMsgResponseDto> raiseSalary(@PathVariable String name, @PathVariable Double rate) {
+        examService.raiseSalary(name,rate);
+        return ResponseEntity.ok(new DataMsgResponseDto(StatusMsgCode.SUCCESS));
+    }
+
+    @GetMapping("/openApi")
+    public ResponseEntity<DataMsgResponseDto> getOpenApi() {
+        return ResponseEntity.ok(new DataMsgResponseDto(StatusMsgCode.SUCCESS,examService.getOpenApi()));
     }
 }
 

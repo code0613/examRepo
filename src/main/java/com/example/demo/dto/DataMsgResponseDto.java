@@ -21,9 +21,4 @@ public class DataMsgResponseDto<T> {
         this.statusCode = statusMsgCode.getHttpStatus().value();
         this.message = statusMsgCode.getDetail();
     }
-
-    public DataMsgResponseDto(int statusCode, String message) {
-        this.statusCode = statusCode;
-        this.message = message;
-    }
 }

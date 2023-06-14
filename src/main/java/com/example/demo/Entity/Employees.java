@@ -3,7 +3,6 @@ package com.example.demo.Entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -34,7 +33,7 @@ public class Employees {
     private LocalDateTime hire_date;
 
     @Column(nullable = false)
-    private String job_id;
+    private String jobId;
 
     @Column(nullable = false)
     private Double salary;
@@ -48,4 +47,7 @@ public class Employees {
     @Column
     private Long department_id;
 
+    public void update(Double Salary) {
+        this.salary = Salary;
+    }
 }
